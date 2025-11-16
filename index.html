@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I'm Sorry, Princess 💗</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffcad4, #f9e2e7);
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Floating hearts container */
+    .hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .heart-float {
+        position: absolute;
+        color: #ff6b81;
+        font-size: 25px;
+        animation: floatUp 6s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(100vh) translateX(0);
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-10vh) translateX(20px);
+            opacity: 0;
+        }
+    }
+
+    .card {
+        max-width: 650px;
+        margin: 60px auto;
+        padding: 40px 25px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 25px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.15);
+        animation: fadeIn 1.2s ease-in-out;
+        position: relative;
+        z-index: 2; /* above floating hearts */
+    }
+
+    h1 {
+        font-size: 2.7rem;
+        margin-bottom: 10px;
+        color: #ff6b81;
+    }
+
+    p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        margin-top: 10px;
+    }
+
+    .heart {
+        font-size: 4rem;
+        color: #ff6b81;
+        animation: heartbeat 1.4s infinite;
+        margin-bottom: 15px;
+    }
+
+    button {
+        margin-top: 25px;
+        background: #ff6b81;
+        color: white;
+        padding: 14px 30px;
+        border: none;
+        font-size: 1rem;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #ff4757;
+        transform: scale(1.05);
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        20% { transform: scale(1.25); }
+        40% { transform: scale(1); }
+        60% { transform: scale(1.25); }
+        80% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+    <div class="heart">❤️</div>
+    <h1>I'm Sorry, Princess</h1>
+
+    <p>
+        Hey baby… it's me, Rahul.  
+        I just want to say I'm really, truly sorry for not being there to talk yesterday.  
+        I never want to make you feel ignored or unimportant.  
+        You mean so much to me, more than I can ever explain in words. 💗
+    </p>
+
+    <p>
+        I hope you can forgive me, princess.  
+        I promise I'll make it up to you and be better for you.  
+    </p>
+
+    <button onclick="alert('Thank you, baby. It means everything to me. ❤️ — Rahul')">
+        Forgive Me, Baby?
+    </button>
+</div>
+
+<script>
+    // Generate floating hearts continuously
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart-float");
+        heart.innerHTML = "❤️";
+
+        // Random horizontal position
+        heart.style.left = Math.random() * 100 + "vw";
+
+        // Random size
+        const size = Math.random() * 20 + 20 + "px";
+        heart.style.fontSize = size;
+
+        // Random animation duration
+        heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+
+        document.getElementById("hearts").appendChild(heart);
+
+        // Remove after animation
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    // Create new hearts every 400ms
+    setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
